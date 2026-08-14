@@ -1,0 +1,14 @@
+[
+  {"name": "Python", "category": "backend", "description": "General-purpose programming language."},
+  {"name": "FastAPI", "category": "backend", "description": "Modern async Python web framework."},
+  {"name": "SQL", "category": "backend", "description": "Relational database querying."},
+  {"name": "System Design", "category": "backend", "description": "Designing scalable, reliable systems."},
+  {"name": "React", "category": "frontend", "description": "Component-based JS UI library."},
+  {"name": "CSS", "category": "frontend", "description": "Styling and layout for the web."},
+  {"name": "UI/UX Design", "category": "design", "description": "Designing usable, delightful interfaces."},
+  {"name": "Data Analysis", "category": "data", "description": "Extracting insights from data."},
+  {"name": "Machine Learning", "category": "data", "description": "Building predictive models from data."},
+  {"name": "Communication", "category": "soft-skill", "description": "Clearly conveying ideas to others."},
+  {"name": "Problem Solving", "category": "soft-skill", "description": "Breaking down and resolving complex issues."},
+  {"name": "Project Management", "category": "soft-skill", "description": "Planning and coordinating work to completion."}
+]

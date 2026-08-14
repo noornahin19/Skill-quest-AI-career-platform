@@ -1,0 +1,1261 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillQuest AI — Career Discovery & Skill DNA Platform</title>
+  
+  <!-- Modern Google Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM: WHITE CANVAS + FRESH MINT GREEN ACCENTS
+       ========================================================================== */
+    :root {
+      --mint-50: #f0fdf4;
+      --mint-100: #dcfce7;
+      --mint-200: #bbf7d0;
+      --mint-300: #86efac;
+      --mint-400: #4ade80;
+      --mint-500: #10b981; /* Main Mint Green */
+      --mint-600: #059669; /* Deep Mint */
+      --mint-700: #047857;
+      --mint-800: #065f46;
+
+      --bg-canvas: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      
+      --border-light: #e2e8f0;
+      --border-mint: #a7f3d0;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 20px -2px rgba(16, 185, 129, 0.08);
+      --shadow-lg: 0 16px 36px -4px rgba(16, 185, 129, 0.14);
+
+      --color-amber: #f59e0b;
+      --color-orange: #f97316;
+      --color-blue: #3b82f6;
+      --color-red: #ef4444;
+
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-canvas);
+      background-image: radial-gradient(var(--mint-100) 1px, transparent 1px), radial-gradient(var(--mint-100) 1px, var(--bg-canvas) 1px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--text-main); font-weight: 700; }
+    .text-mint { color: var(--mint-500) !important; }
+    .text-mint-dark { color: var(--mint-700) !important; }
+    .text-muted { color: var(--text-muted) !important; }
+    .font-mono { font-family: var(--font-mono) !important; }
+    .hidden { display: none !important; }
+    .w-full { width: 100%; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-2 { gap: 8px; }
+    .gap-3 { gap: 12px; }
+    .gap-4 { gap: 16px; }
+    .mt-1 { margin-top: 4px; }
+    .mt-2 { margin-top: 8px; }
+    .mt-4 { margin-top: 16px; }
+    .mt-6 { margin-top: 24px; }
+    .mt-8 { margin-top: 32px; }
+    .mb-1 { margin-bottom: 4px; }
+    .mb-2 { margin-bottom: 8px; }
+    .mb-3 { margin-bottom: 12px; }
+    .mb-4 { margin-bottom: 16px; }
+    .mr-2 { margin-right: 8px; }
+
+    /* Top Sticky Navigation Bar */
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      max-width: 1240px; margin: 0 auto; padding: 0 24px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+    .brand-logo {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--mint-500), var(--mint-600));
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); font-weight: 800; font-size: 1.2rem;
+    }
+    .brand-title { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800; line-height: 1.1; }
+    .brand-sub { display: block; font-size: 0.72rem; font-weight: 700; color: var(--mint-600); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; overflow-x: auto; }
+    .nav-item {
+      display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 10px;
+      border: none; background: transparent; color: var(--text-muted); font-family: var(--font-heading);
+      font-size: 0.86rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+    }
+    .nav-item:hover { color: var(--mint-600); background: var(--mint-50); }
+    .nav-item.active { color: var(--mint-700); background: var(--mint-100); box-shadow: inset 0 0 0 1px var(--mint-300); }
+
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .stat-pill { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; font-family: var(--font-mono); }
+    .streak-pill { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+    .xp-pill { background: var(--mint-50); color: var(--mint-700); border: 1px solid var(--mint-200); }
+
+    .user-profile-menu { display: flex; align-items: center; gap: 8px; padding: 4px 10px 4px 4px; border-radius: 50px; border: 1px solid var(--border-light); background: #fff; cursor: pointer; }
+    .avatar-circle { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--mint-400), var(--mint-600)); color: #fff; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+    .user-display-name { font-size: 0.84rem; font-weight: 600; }
+
+    .app-viewport { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
+    .view-section { animation: fadeIn 0.35s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Cards & Components */
+    .card { background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-light); box-shadow: var(--shadow-md); padding: 24px; transition: all 0.2s ease; }
+    .card:hover { border-color: var(--mint-200); }
+    .card-header-flex { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .card-title-lg { font-size: 1.35rem; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+    .card-title-md { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+    .card-title-sm { font-size: 0.98rem; font-weight: 700; }
+    .card-subtitle { font-size: 0.82rem; color: var(--text-muted); }
+    .card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.55; }
+
+    .badge-mint { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: var(--mint-100); color: var(--mint-800); border: 1px solid var(--mint-300); border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
+    .badge-mint-soft { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: var(--mint-50); color: var(--mint-700); border: 1px solid var(--mint-200); border-radius: 50px; font-size: 0.78rem; font-weight: 700; margin-bottom: 12px; }
+    .badge-pill-soft { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #f1f5f9; color: var(--text-muted); border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+    .badge-warning { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #fef3c7; color: #92400e; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
+
+    .btn-mint-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, var(--mint-500), var(--mint-600));
+      color: #fff; border: none; padding: 12px 22px; border-radius: var(--radius-md);
+      font-family: var(--font-heading); font-size: 0.92rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.28); transition: all 0.2s ease; text-decoration: none;
+    }
+    .btn-mint-primary:hover { background: linear-gradient(135deg, var(--mint-400), var(--mint-500)); transform: translateY(-1px); }
+
+    .btn-mint-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: #fff; color: var(--mint-700); border: 1px solid var(--mint-300);
+      padding: 10px 18px; border-radius: var(--radius-md); font-family: var(--font-heading);
+      font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease;
+    }
+    .btn-mint-secondary:hover { background: var(--mint-50); }
+
+    /* ==========================================================================
+       1. AUTH / LOGIN VIEW
+       ========================================================================== */
+    .auth-page-container { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 20px 0; }
+    .auth-card-wrapper {
+      max-width: 920px; width: 100%; background: #fff; border-radius: var(--radius-xl);
+      border: 1px solid var(--border-light); box-shadow: var(--shadow-lg); overflow: hidden;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+    }
+    .auth-form-side { padding: 44px; display: flex; flex-direction: column; justify-content: center; }
+    .auth-banner-side {
+      background: linear-gradient(145deg, var(--mint-500), var(--mint-700));
+      color: #fff; padding: 44px; display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .auth-banner-side::after {
+      content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px;
+      background: rgba(255, 255, 255, 0.12); border-radius: 50%; filter: blur(20px);
+    }
+    .auth-tabs { display: flex; gap: 8px; background: #f1f5f9; padding: 4px; border-radius: 12px; margin-bottom: 24px; }
+    .auth-tab-btn {
+      flex: 1; padding: 10px; border-radius: 9px; border: none; background: transparent;
+      font-family: var(--font-heading); font-size: 0.88rem; font-weight: 700; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .auth-tab-btn.active { background: #fff; color: var(--mint-700); box-shadow: var(--shadow-sm); }
+
+    .auth-input-group { margin-bottom: 18px; }
+    .auth-input-group label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+    .input-icon-wrap { position: relative; display: flex; align-items: center; }
+    .input-icon-wrap .input-icon { position: absolute; left: 14px; color: var(--text-subtle); font-size: 1rem; }
+    .input-icon-wrap input, .mint-select {
+      width: 100%; padding: 12px 14px 12px 42px; border-radius: var(--radius-md); border: 1.5px solid var(--border-light);
+      font-family: var(--font-body); font-size: 0.92rem; outline: none; background: #fff; transition: border-color 0.2s;
+    }
+    .input-icon-wrap input:focus, .mint-select:focus { border-color: var(--mint-500); box-shadow: 0 0 0 3px var(--mint-100); }
+
+    .quick-guest-btn {
+      background: #f8fafc; border: 1px dashed var(--mint-300); color: var(--mint-700);
+      padding: 11px; border-radius: var(--radius-md); font-size: 0.84rem; font-weight: 700;
+      width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px;
+    }
+    .quick-guest-btn:hover { background: var(--mint-50); border-style: solid; }
+
+    /* ==========================================================================
+       2. DASHBOARD VIEW
+       ========================================================================== */
+    .welcome-banner {
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--mint-50) 100%);
+      border-radius: var(--radius-xl); border: 1px solid var(--mint-200);
+      box-shadow: var(--shadow-md); padding: 32px; margin-bottom: 28px;
+    }
+    .welcome-heading { font-size: 1.8rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .banner-sub { font-size: 0.95rem; color: var(--text-muted); max-width: 600px; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .kpi-card { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border-light); padding: 18px; }
+    .kpi-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .kpi-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .kpi-icon-box { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .mint-box { background: var(--mint-100); color: var(--mint-700); }
+    .emerald-box { background: #d1fae5; color: #047857; }
+    .amber-box { background: #fef3c7; color: #b45309; }
+    .orange-box { background: #ffedd5; color: #c2410c; }
+    .kpi-value-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+    .kpi-value { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; }
+    .kpi-tag { font-size: 0.72rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
+    .tag-success { background: var(--mint-100); color: var(--mint-800); }
+    .tag-info { background: #e0f2fe; color: #0369a1; }
+    .tag-amber { background: #fef3c7; color: #b45309; }
+    .tag-orange { background: #ffedd5; color: #c2410c; }
+
+    .progress-bar-bg { height: 6px; width: 100%; background: #f1f5f9; border-radius: 10px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; border-radius: 10px; transition: width 0.6s ease; }
+    .fill-mint { background: var(--mint-500); }
+    .fill-emerald { background: var(--mint-700); }
+    .fill-amber { background: var(--color-amber); }
+    .fill-orange { background: var(--color-orange); }
+
+    .dashboard-two-col { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; }
+    .card-action-highlight { background: linear-gradient(135deg, #fff 0%, var(--mint-50) 100%); border: 1.5px solid var(--mint-300); }
+    .action-meta-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: #fff; border: 1px solid var(--mint-200); border-radius: var(--radius-md); padding: 14px; margin-bottom: 20px; }
+
+    .readiness-bars-list { display: flex; flex-direction: column; gap: 14px; }
+    .readiness-row { display: flex; flex-direction: column; gap: 4px; }
+    .readiness-info { display: flex; justify-content: space-between; font-size: 0.82rem; }
+
+    .careers-card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .career-track-card { background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; cursor: pointer; transition: all 0.2s ease; }
+    .career-track-card:hover { border-color: var(--mint-400); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .career-track-card.active { border: 2px solid var(--mint-500); background: var(--mint-50); }
+
+    /* ==========================================================================
+       3. QUIZ & ASSESSMENT COMPONENT
+       ========================================================================== */
+    .quiz-wrapper { max-width: 760px; margin: 0 auto; }
+    .quiz-header-card { background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border-light); padding: 24px; box-shadow: var(--shadow-md); margin-bottom: 20px; }
+    .quiz-step-counter { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--mint-700); background: var(--mint-50); padding: 4px 12px; border-radius: 50px; border: 1px solid var(--mint-200); }
+    .quiz-progress-track { height: 8px; background: #f1f5f9; border-radius: 10px; overflow: hidden; margin: 12px 0; }
+    .quiz-progress-bar { height: 100%; background: linear-gradient(90deg, var(--mint-400), var(--mint-600)); border-radius: 10px; transition: width 0.3s ease; }
+    .question-prompt { font-size: 1.2rem; font-weight: 700; margin-bottom: 24px; white-space: pre-line; line-height: 1.45; }
+    .quiz-options-grid { display: flex; flex-direction: column; gap: 12px; }
+    .quiz-option-btn {
+      display: flex; align-items: center; justify-content: space-between; width: 100%;
+      padding: 16px 20px; border-radius: var(--radius-md); border: 1.5px solid var(--border-light);
+      background: #fff; font-size: 0.92rem; font-weight: 600; cursor: pointer; text-align: left; transition: all 0.2s ease;
+    }
+    .quiz-option-btn:hover { border-color: var(--mint-400); background: var(--mint-50); transform: translateX(4px); }
+    .quiz-option-btn.selected { border-color: var(--mint-500); background: var(--mint-100); color: var(--mint-900); }
+
+    .slider-interactive-wrap { display: flex; align-items: center; gap: 20px; }
+    .mint-range { flex: 1; accent-color: var(--mint-500); height: 8px; cursor: pointer; }
+    .slider-display-val { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800; color: var(--mint-700); background: var(--mint-50); border: 1px solid var(--mint-200); padding: 6px 14px; border-radius: var(--radius-sm); }
+
+    /* ==========================================================================
+       4. ADAPTIVE ROADMAP VIEW (WITH THE HACKATHON WOW FACTOR)
+       ========================================================================== */
+    .roadmap-timeline { display: flex; flex-direction: column; max-width: 840px; margin: 0 auto; }
+    .roadmap-stage-card { display: flex; gap: 20px; }
+    .stage-indicator { display: flex; flex-direction: column; align-items: center; }
+    .indicator-badge { width: 42px; height: 42px; border-radius: 50%; background: #f1f5f9; border: 2px solid var(--border-light); color: var(--text-subtle); display: flex; align-items: center; justify-content: center; z-index: 2; font-weight: 800; }
+    .completed .indicator-badge { background: var(--mint-500); border-color: var(--mint-500); color: #fff; }
+    .in-progress .indicator-badge { background: #fff; border-color: var(--mint-500); color: var(--mint-600); box-shadow: 0 0 0 4px var(--mint-100); }
+    .stage-line { width: 2px; flex: 1; background: var(--border-light); margin: 6px 0; }
+    .completed .stage-line { background: var(--mint-300); }
+    .stage-content { flex: 1; background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+    .in-progress .stage-content { border: 1.5px solid var(--mint-300); background: linear-gradient(135deg, #fff 0%, var(--mint-50) 100%); }
+
+    .adaptive-alert-banner {
+      background: #fef2f2; border: 1.5px solid #f87171; border-radius: var(--radius-md); padding: 14px 18px;
+      margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      animation: pulseAlert 2s infinite;
+    }
+    @keyframes pulseAlert { 0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.2); } 50% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); } }
+
+    /* ==========================================================================
+       5. CAREER SIMULATOR ("TRY THIS CAREER")
+       ========================================================================== */
+    .sim-container { max-width: 860px; margin: 0 auto; }
+    .sim-brief-card { background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border-light); padding: 28px; box-shadow: var(--shadow-md); margin-bottom: 24px; }
+    .sim-terminal { background: #0f172a; color: #38bdf8; font-family: var(--font-mono); padding: 18px; border-radius: var(--radius-md); margin: 16px 0; font-size: 0.85rem; }
+    .sim-choice-btn {
+      padding: 16px 20px; border-radius: var(--radius-md); border: 1.5px solid var(--border-light);
+      background: #fff; font-size: 0.92rem; font-weight: 600; cursor: pointer; text-align: left; width: 100%; margin-bottom: 12px; transition: all 0.2s;
+    }
+    .sim-choice-btn:hover { border-color: var(--mint-400); background: var(--mint-50); }
+
+    /* ==========================================================================
+       6. CAREER PASSPORT & PRINTABLE CERTIFICATE
+       ========================================================================== */
+    .passport-container { max-width: 800px; margin: 0 auto; background: #fff; border: 2px solid var(--mint-300); border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-lg); }
+    .passport-stamp { display: inline-block; border: 2px dashed var(--mint-500); padding: 8px 16px; border-radius: 8px; color: var(--mint-700); font-family: var(--font-mono); font-weight: 800; text-transform: uppercase; font-size: 0.85rem; transform: rotate(-3deg); }
+
+    /* ==========================================================================
+       7. FLOATING AI CHATBOX WIDGET
+       ========================================================================== */
+    .floating-chat-trigger {
+      position: fixed; bottom: 24px; right: 24px; z-index: 250;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint-500), var(--mint-700));
+      color: #fff; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+      display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; font-size: 1.5rem;
+    }
+    .floating-chat-trigger:hover { transform: scale(1.06); }
+    .chat-unread-badge {
+      position: absolute; top: -2px; right: -2px; width: 14px; height: 14px;
+      background: var(--color-orange); border: 2px solid #fff; border-radius: 50%;
+    }
+
+    .chat-widget-window {
+      position: fixed; bottom: 94px; right: 24px; z-index: 250;
+      width: 360px; height: 480px; background: #fff; border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light); box-shadow: var(--shadow-lg);
+      display: flex; flex-direction: column; overflow: hidden;
+      animation: slideUp 0.3s ease-out;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--mint-600), var(--mint-700));
+      color: #fff; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .chat-header-info { display: flex; align-items: center; gap: 10px; }
+    .chat-avatar { width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .chat-close-btn { background: transparent; border: none; color: #fff; cursor: pointer; font-size: 1.2rem; }
+
+    .chat-body-messages {
+      flex: 1; padding: 16px; overflow-y: auto; background: #f8fafc;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .chat-msg { max-width: 82%; font-size: 0.84rem; line-height: 1.45; padding: 10px 14px; border-radius: 14px; }
+    .chat-msg.bot { background: #fff; color: var(--text-main); border: 1px solid var(--border-light); border-top-left-radius: 4px; align-self: flex-start; }
+    .chat-msg.user { background: var(--mint-500); color: #fff; border-top-right-radius: 4px; align-self: flex-end; }
+    
+    .chat-quick-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; background: #fff; border-top: 1px solid var(--border-light); }
+    .quick-tag-chip { background: var(--mint-50); color: var(--mint-700); border: 1px solid var(--mint-200); border-radius: 50px; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; cursor: pointer; }
+    .quick-tag-chip:hover { background: var(--mint-100); }
+
+    .chat-footer-input { padding: 10px 12px; background: #fff; border-top: 1px solid var(--border-light); display: flex; gap: 8px; }
+    .chat-input { flex: 1; padding: 8px 12px; border-radius: 20px; border: 1px solid var(--border-light); font-size: 0.85rem; outline: none; }
+    .chat-input:focus { border-color: var(--mint-500); }
+    .chat-send-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--mint-600); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+    .toast-container { position: fixed; bottom: 24px; left: 24px; z-index: 300; display: flex; flex-direction: column; gap: 10px; }
+    .toast { display: flex; align-items: center; gap: 10px; background: #fff; border-left: 4px solid var(--mint-500); box-shadow: var(--shadow-lg); border-radius: var(--radius-sm); padding: 12px 18px; font-size: 0.88rem; font-weight: 600; }
+
+    @media (max-width: 960px) {
+      .auth-card-wrapper { grid-template-columns: 1fr; }
+      .auth-banner-side { display: none; }
+      .kpi-grid, .careers-card-grid { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-two-col, .analysis-grid { grid-template-columns: 1fr; }
+      .welcome-banner { flex-direction: column; align-items: flex-start; }
+      .chat-widget-window { width: calc(100vw - 32px); right: 16px; bottom: 90px; }
+    }
+    @media (max-width: 600px) {
+      .kpi-grid, .careers-card-grid { grid-template-columns: 1fr; }
+      .app-viewport { padding: 20px 14px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR (LOCKED UNTIL AFTER AUTH / QUIZ) -->
+  <header class="top-nav" id="mainHeader">
+    <div class="nav-container">
+      <div class="nav-brand" onclick="navigateTo('dashboard')">
+        <div class="brand-logo">🧭</div>
+        <div>
+          <span class="brand-title">SkillQuest<span class="text-mint">.ai</span></span>
+          <span class="brand-sub">Career Discovery</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="headerNavLinks">
+        <button class="nav-item active" data-view="dashboard" onclick="navigateTo('dashboard')">Dashboard</button>
+        <button class="nav-item" data-view="quiz" onclick="navigateTo('quiz')">Career Quiz</button>
+        <button class="nav-item" data-view="analysis" onclick="navigateTo('analysis')">Skill DNA</button>
+        <button class="nav-item" data-view="simulator" onclick="navigateTo('simulator')">Simulator</button>
+        <button class="nav-item" data-view="roadmap" onclick="navigateTo('roadmap')">Roadmap</button>
+        <button class="nav-item" data-view="learn" onclick="navigateTo('learn')">Learn Hub</button>
+        <button class="nav-item" data-view="passport" onclick="navigateTo('passport')">Career Passport</button>
+      </nav>
+
+      <div class="nav-right">
+        <div class="stat-pill streak-pill">
+          <span>🔥</span> <span id="streakCount">1</span><span style="font-size:0.7rem;">d streak</span>
+        </div>
+        <div class="stat-pill xp-pill">
+          <span>⚡</span> <span id="xpCount">80</span><span style="font-size:0.7rem;">XP</span>
+        </div>
+        <div class="user-profile-menu" onclick="handleLogout()" title="Click to log out">
+          <div class="avatar-circle" id="userAvatar">A</div>
+          <span class="user-display-name" id="userDisplayName">Alex</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">Logout</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="app-viewport">
+
+    <!-- ====================================================================
+         1. DEDICATED LOGIN / SIGN IN SCREEN (STEP 1 IN REAL FLOW)
+         ==================================================================== -->
+    <section class="auth-page-container" id="authView">
+      <div class="auth-card-wrapper">
+        <div class="auth-form-side">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="brand-logo" style="width:34px; height:34px; font-size:1rem;">🧭</div>
+            <strong style="font-size:1.15rem;">SkillQuest<span class="text-mint">.ai</span></strong>
+          </div>
+          
+          <h2 class="card-title-lg" id="authHeaderTitle">Discover Your Career DNA</h2>
+          <p class="card-subtitle mb-4" id="authHeaderSubtitle">Sign in to benchmark your skills with deterministic evidence.</p>
+
+          <div class="auth-tabs">
+            <button class="auth-tab-btn active" id="tabSignIn" onclick="switchAuthTab('signin')">Sign In</button>
+            <button class="auth-tab-btn" id="tabSignUp" onclick="switchAuthTab('signup')">Create Account</button>
+          </div>
+
+          <form onsubmit="handleAuthSubmit(event)">
+            <div class="auth-input-group" id="nameFieldGroup" style="display:none;">
+              <label>Full Name</label>
+              <div class="input-icon-wrap">
+                <span class="input-icon">👤</span>
+                <input type="text" id="authNameInput" placeholder="Alex Morgan" value="Alex Morgan">
+              </div>
+            </div>
+
+            <div class="auth-input-group">
+              <label>Email Address</label>
+              <div class="input-icon-wrap">
+                <span class="input-icon">✉️</span>
+                <input type="email" id="authEmailInput" required placeholder="alex@skillquest.ai" value="alex@skillquest.ai">
+              </div>
+            </div>
+
+            <div class="auth-input-group">
+              <label>Password</label>
+              <div class="input-icon-wrap">
+                <span class="input-icon">🔒</span>
+                <input type="password" id="authPasswordInput" required placeholder="••••••••" value="password123">
+              </div>
+            </div>
+
+            <button type="submit" class="btn-mint-primary w-full" id="authSubmitBtn">
+              <span>Sign In & Start Discovery Quiz</span> →
+            </button>
+          </form>
+
+          <button class="quick-guest-btn" onclick="quickGuestLogin()">
+            ⚡ One-Click Demo Mode (Student: Alex, 2nd Yr CS)
+          </button>
+        </div>
+
+        <div class="auth-banner-side">
+          <div>
+            <span class="badge-mint" style="background:rgba(255,255,255,0.2); color:#fff; border:none;">
+              ✨ Hackathon Grand Edition
+            </span>
+            <h3 style="font-size:1.6rem; margin-top:14px; font-weight:800; line-height:1.25;">
+              "Don't just choose a career. Build yourself for it."
+            </h3>
+            <p style="font-size:0.88rem; opacity:0.9; margin-top:12px; line-height:1.6;">
+              SkillQuest calculates your verifiable Skill DNA, flags your Confidence Gaps, tests you with real job simulators, and dynamically mutates your roadmap when you struggle.
+            </p>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.15); padding:16px; border-radius:14px; font-size:0.82rem;">
+            <strong>✓ Deterministic Scoring Algorithm</strong>
+            <p style="opacity:0.9; margin-top:4px;">No hallucinated percentages. 100% auditable skill evidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         2. ONBOARDING QUIZ (STEP 2 - SHOWN RIGHT AFTER LOGIN)
+         ==================================================================== -->
+    <section class="view-section hidden" id="quizView">
+      <div class="quiz-wrapper">
+        <div class="quiz-header-card">
+          <div class="flex justify-between items-center mb-3">
+            <div>
+              <span class="badge-mint">Step 2: Diagnostic Calibration</span>
+              <h1 class="card-title-lg mt-1">Career Discovery Assessment</h1>
+            </div>
+            <div class="quiz-step-counter"><span id="quizCurrentStep">1</span> / <span id="quizTotalSteps">6</span></div>
+          </div>
+          <div class="quiz-progress-track"><div class="quiz-progress-bar" id="quizProgressBar" style="width: 16%"></div></div>
+        </div>
+
+        <div class="card">
+          <h2 class="question-prompt" id="quizPrompt">Loading question...</h2>
+          <div class="quiz-options-grid" id="quizOptionsContainer"></div>
+
+          <div class="hidden" id="confidenceSliderBox">
+            <p class="card-subtitle mb-3">Rate your self-assessed confidence with Applied Statistics & Data Intuition:</p>
+            <div class="slider-interactive-wrap">
+              <input type="range" min="0" max="100" value="82" class="mint-range" id="confidenceSlider" oninput="document.getElementById('sliderValDisplay').textContent=this.value">
+              <div class="slider-display-val"><span id="sliderValDisplay">82</span>%</div>
+            </div>
+            <button class="btn-mint-primary mt-4 w-full" onclick="submitConfidenceAnswer()">
+              Confirm & Calibrate Skill DNA ✓
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. DASHBOARD VIEW (STEP 3 - UNLOCKED AFTER QUIZ)
+         ==================================================================== -->
+    <section class="view-section hidden" id="dashboardView">
+      <div class="welcome-banner">
+        <div>
+          <span class="badge-mint-soft">✓ Career DNA Benchmark Complete</span>
+          <h1 class="welcome-heading">Welcome back, <span id="dashGreetingName" class="text-mint">Alex</span> 👋</h1>
+          <p class="banner-sub">Target Track: <strong id="dashTargetCareerName" class="text-mint-dark">Data Scientist</strong> • Level 5 Practitioner • 16-Week Mission Active</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn-mint-primary" onclick="triggerAdaptiveDemo()">⚡ Trigger Demo WOW Moment</button>
+          <button class="btn-mint-secondary" onclick="navigateTo('simulator')">🎮 Try Career Simulation</button>
+        </div>
+      </div>
+
+      <!-- KPI Grid -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-header"><span class="kpi-label">Career Fit</span><div class="kpi-icon-box mint-box">🎯</div></div>
+          <div class="kpi-value-row"><span class="kpi-value" id="kpiCareerFit">91%</span><span class="kpi-tag tag-success">High Match</span></div>
+          <p class="card-subtitle mt-1">Alignment to your passion & cognitive traits</p>
+          <div class="progress-bar-bg mt-2"><div class="progress-bar-fill fill-mint" id="kpiFitProgress" style="width: 91%"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-header"><span class="kpi-label">Readiness</span><div class="kpi-icon-box emerald-box">🛡️</div></div>
+          <div class="kpi-value-row"><span class="kpi-value" id="kpiReadiness">61%</span><span class="kpi-tag tag-info">Stage 2</span></div>
+          <p class="card-subtitle mt-1">Verified skills, projects & simulations</p>
+          <div class="progress-bar-bg mt-2"><div class="progress-bar-fill fill-emerald" id="kpiReadinessProgress" style="width: 61%"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-header"><span class="kpi-label">Earned XP</span><div class="kpi-icon-box amber-box">⚡</div></div>
+          <div class="kpi-value-row"><span class="kpi-value" id="kpiXP">1,280 XP</span><span class="kpi-tag tag-amber">Level 5</span></div>
+          <p class="card-subtitle mt-1">220 XP to unlock Level 6 Challenger</p>
+          <div class="progress-bar-bg mt-2"><div class="progress-bar-fill fill-amber" style="width: 85%"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-header"><span class="kpi-label">Weekly Consistency</span><div class="kpi-icon-box orange-box">🔥</div></div>
+          <div class="kpi-value-row"><span class="kpi-value">5 / 7 Days</span><span class="kpi-tag tag-orange">Active</span></div>
+          <p class="card-subtitle mt-1">7-day daily learning streak protected</p>
+          <div class="progress-bar-bg mt-2"><div class="progress-bar-fill fill-orange" style="width: 71%"></div></div>
+        </div>
+      </div>
+
+      <div class="dashboard-two-col">
+        <!-- Next Best Action Card -->
+        <div class="card card-action-highlight">
+          <div class="flex justify-between items-center mb-2">
+            <span class="badge-mint">🎯 Highest Priority Action</span>
+            <span class="badge-pill-soft">~15 mins • +30 XP</span>
+          </div>
+          <h2 class="card-title-lg" id="dashActionTitle">Strengthen Applied Statistics Fundamentals</h2>
+          <p class="card-desc" id="dashActionDesc">
+            Statistics has the highest weighting gap (43% vs 85% requirement). Completing today's challenge directly improves your internship readiness.
+          </p>
+          <div class="action-meta-box">
+            <div><span class="kpi-label">Reward</span><strong class="text-mint block mt-1">+30 XP & +8% Lift</strong></div>
+            <div><span class="kpi-label">Topic</span><strong id="dashActionTopic" class="block mt-1">Mean vs. Median</strong></div>
+            <div><span class="kpi-label">Status</span><span class="badge-mint mt-1">Ready</span></div>
+          </div>
+          <div class="flex gap-2">
+            <button class="btn-mint-primary" onclick="navigateTo('learn')">Start Today's Mission →</button>
+            <button class="btn-mint-secondary" onclick="navigateTo('roadmap')">View Full Roadmap</button>
+          </div>
+        </div>
+
+        <!-- Career Readiness Dimension Breakdown -->
+        <div class="card">
+          <div class="card-header-flex">
+            <div><h3 class="card-title-md">Career Readiness Breakdown</h3><p class="card-subtitle">Multi-dimensional verified audit</p></div>
+            <button class="btn-mint-secondary" style="font-size:0.75rem; padding:6px 12px;" onclick="navigateTo('analysis')">Details</button>
+          </div>
+          <div class="readiness-bars-list" id="readinessBarsContainer"></div>
+        </div>
+      </div>
+
+      <!-- Recommended Pathways -->
+      <div class="mt-6">
+        <h3 class="card-title-md mb-3">Personalized Career Alignment Matches</h3>
+        <div class="careers-card-grid" id="dashboardCareersGrid"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. SKILL DNA & ANALYSIS VIEW
+         ==================================================================== -->
+    <section class="view-section hidden" id="analysisView">
+      <div class="mb-4">
+        <span class="badge-mint-soft">🧬 Cognitive Blueprint</span>
+        <h1 class="welcome-heading">Your Verified <span class="text-mint">Skill DNA</span></h1>
+        <p class="banner-sub">Calculated from deterministic diagnostic evidence across all technical & soft competencies.</p>
+      </div>
+
+      <div class="analysis-grid">
+        <div class="card">
+          <div class="card-header-flex">
+            <div><h3 class="card-title-md">7-Dimensional Competency Profile</h3><p class="card-subtitle">Live evidentiary strand</p></div>
+            <span class="badge-mint">Evidence Verified</span>
+          </div>
+          <div id="helixSvgContainer"></div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <!-- Confidence Gap Alert Card -->
+          <div class="card" id="confidenceGapAlertCard" style="background:#fffbeb; border:1px solid #fde68a;">
+            <span class="badge-warning mb-2">⚠️ Confidence Gap Detected</span>
+            <h4 class="card-title-sm">Self-Assessed (82%) vs Demonstrated (43%)</h4>
+            <p class="card-desc mt-1" id="confidenceGapText">
+              You feel confident with Statistics (82%), but your diagnostic assessment suggests foundational metrics (variance, outliers) need practice. We've customized your drills accordingly.
+            </p>
+          </div>
+
+          <!-- Dual Radial Gauges -->
+          <div class="card">
+            <h4 class="card-title-sm mb-3">Data Scientist Alignment</h4>
+            <div class="radials-row">
+              <div class="radial-box">
+                <div class="radial-circle-wrap">
+                  <svg class="radial-svg" width="90" height="90" viewBox="0 0 90 90">
+                    <circle cx="45" cy="45" r="36" class="circle-bg" />
+                    <circle cx="45" cy="45" r="36" class="circle-fill-mint" id="radialFitCircle" style="stroke-dashoffset: 20;" />
+                  </svg>
+                  <span class="radial-center-text" id="radialFitText">91%</span>
+                </div>
+                <span class="kpi-label">Career Fit</span>
+              </div>
+              <div class="radial-box">
+                <div class="radial-circle-wrap">
+                  <svg class="radial-svg" width="90" height="90" viewBox="0 0 90 90">
+                    <circle cx="45" cy="45" r="36" class="circle-bg" />
+                    <circle cx="45" cy="45" r="36" class="circle-fill-emerald" id="radialReadinessCircle" style="stroke-dashoffset: 88;" />
+                  </svg>
+                  <span class="radial-center-text" id="radialReadinessText">61%</span>
+                </div>
+                <span class="kpi-label">Readiness</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. CAREER SIMULATOR ("TRY THIS CAREER")
+         ==================================================================== -->
+    <section class="view-section hidden" id="simulatorView">
+      <div class="sim-container">
+        <div class="mb-4">
+          <span class="badge-mint-soft">🎮 Realistic Work Experience</span>
+          <h1 class="welcome-heading">Junior Data Scientist <span class="text-mint">Simulator</span></h1>
+          <p class="banner-sub">Experience a day on the job before committing to months of study.</p>
+        </div>
+
+        <div class="sim-brief-card">
+          <div class="flex justify-between items-center mb-3">
+            <span class="badge-mint">Scenario #DS-104</span>
+            <span class="badge-pill-soft">Estimated time: 5 mins</span>
+          </div>
+
+          <h2 class="card-title-lg">SaaS Subscription Churn Investigation</h2>
+          <p class="card-desc">
+            You are a Junior Data Scientist at a fast-growing B2B SaaS startup. Your VP of Growth bursts into your Slack channel: <em>"Our monthly churn spiked by 18% overnight! What should we do first?"</em>
+          </p>
+
+          <div class="sim-terminal">
+            $ python -m analytics.pipeline --status<br>
+            [ALERT] 24-hr event log drop detected in payment_gateway_v2 webhook.<br>
+            [METRIC] User cancellation events: Normal range (+1.2%).<br>
+            [ANOMALY] Failed recurring billing attempts: +19.4% (Gateway timeout).
+          </div>
+
+          <p class="font-bold mb-3">What is your first strategic decision?</p>
+          <div class="flex flex-col gap-2">
+            <button class="sim-choice-btn" onclick="submitSimChoice(1)">
+              <strong>Option A:</strong> Immediately alert leadership that payment webhook failures are falsely logging renewals as churned users.
+            </button>
+            <button class="sim-choice-btn" onclick="submitSimChoice(2)">
+              <strong>Option B:</strong> Propose an immediate 50% discount email campaign to all churned users.
+            </button>
+            <button class="sim-choice-btn" onclick="submitSimChoice(3)">
+              <strong>Option C:</strong> Build a complex Deep Neural Network to predict user sentiment.
+            </button>
+          </div>
+
+          <div class="hidden mt-4 p-4 rounded-xl border border-mint-300 bg-mint-50" id="simFeedbackBox">
+            <h4 class="font-bold text-mint-dark" id="simFeedbackTitle">Excellent Analytical Reasoning! (Score: 92/100)</h4>
+            <p class="text-sm text-slate-700 mt-1" id="simFeedbackText">
+              You diagnosed the upstream data lineage fault before executing expensive marketing changes. +75 XP awarded to your Career Readiness score!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         6. ADAPTIVE ROADMAP & CAREER MISSION
+         ==================================================================== -->
+    <section class="view-section hidden" id="roadmapView">
+      <div class="mb-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="badge-mint-soft">🚀 16-Week Career Mission</span>
+            <h1 class="welcome-heading">Adaptive Execution <span class="text-mint">Roadmap</span></h1>
+            <p class="banner-sub">Target Role: <strong class="text-mint-dark">Data Scientist</strong> • Mission: Internship-Ready</p>
+          </div>
+          <button class="btn-mint-secondary" onclick="triggerAdaptiveDemo()">⚡ Simulate Performance Drift</button>
+        </div>
+      </div>
+
+      <div class="adaptive-alert-banner hidden" id="adaptiveRoadmapBanner">
+        <div>
+          <strong style="color:#991b1b; display:block;">⚡ Adaptive Learning Engine Triggered!</strong>
+          <span style="font-size:0.84rem; color:#7f1d1d;">
+            Because you scored 35% on the Statistics Diagnostic, your roadmap was automatically updated with foundational prerequisite drills.
+          </span>
+        </div>
+        <span class="badge-pill-soft" style="background:#fee2e2; color:#991b1b; font-weight:700;">Roadmap Mutated</span>
+      </div>
+
+      <div class="roadmap-timeline" id="roadmapTimelineContainer">
+        <!-- Stage 1 -->
+        <div class="roadmap-stage-card completed">
+          <div class="stage-indicator"><div class="indicator-badge">✓</div><div class="stage-line"></div></div>
+          <div class="stage-content">
+            <span class="kpi-label">Stage 1 · Verified Baseline</span>
+            <h3 class="card-title-md mt-1">Cognitive Profiling & Skill DNA Discovery</h3>
+            <p class="card-desc">Completed 11-question diagnostic assessment & initial self-calibration.</p>
+          </div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="roadmap-stage-card in-progress">
+          <div class="stage-indicator"><div class="indicator-badge">2</div><div class="stage-line"></div></div>
+          <div class="stage-content" id="stage2Content">
+            <div class="flex justify-between items-center mb-1">
+              <span class="kpi-label text-mint-dark">Stage 2 · In Progress</span>
+              <span class="badge-mint">Current Priority</span>
+            </div>
+            <h3 class="card-title-md" id="stage2Title">Targeted Core Competency Sprints</h3>
+            <p class="card-desc" id="stage2Desc">Closing priority gaps in Applied Statistics, SQL, and Python data structures.</p>
+            
+            <div class="p-3 bg-white rounded-xl border border-mint-200 mb-3" id="stage2TaskList">
+              <div class="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-2">
+                <span>☑️</span> <span>Python List Slicing & Collections (Mastered)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-2">
+                <span>🔲</span> <span>SQL GROUP BY & HAVING query drills (+30 XP)</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm font-semibold text-slate-800">
+                <span>🔲</span> <span>Mean vs. Median Outlier Resistance Drills (+30 XP)</span>
+              </div>
+            </div>
+
+            <button class="btn-mint-primary" onclick="proceedNextMilestone()">Verify Milestone & Earn +40 XP →</button>
+          </div>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="roadmap-stage-card">
+          <div class="stage-indicator"><div class="indicator-badge">3</div><div class="stage-line"></div></div>
+          <div class="stage-content">
+            <span class="kpi-label">Stage 3 · Locked</span>
+            <h3 class="card-title-md mt-1">Real-World Project Portfolios & Simulation</h3>
+            <p class="card-desc">End-to-end data pipeline construction, EDA reports, and business dashboard presentation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7. LEARN HUB ("WANT TO LEARN SOMETHING")
+         ==================================================================== -->
+    <section class="view-section hidden" id="learnView">
+      <div class="mb-4">
+        <span class="badge-mint-soft">📖 Accelerated Micro-Learning</span>
+        <h1 class="welcome-heading">Interactive <span class="text-mint">Learn Hub</span></h1>
+        <p class="banner-sub">Master concepts in 10-minute micro-lessons and boost your Skill DNA score immediately.</p>
+      </div>
+
+      <div class="learn-topics-bar flex gap-2 overflow-x-auto pb-2 mb-4">
+        <button class="btn-mint-secondary active" onclick="selectLearnTopic('statistics')">Applied Statistics</button>
+        <button class="btn-mint-secondary" onclick="selectLearnTopic('sql')">SQL Queries</button>
+        <button class="btn-mint-secondary" onclick="selectLearnTopic('python')">Python</button>
+        <button class="btn-mint-secondary" onclick="selectLearnTopic('analytical')">Analytical Reasoning</button>
+      </div>
+
+      <div class="dashboard-two-col">
+        <div class="card">
+          <span class="badge-mint" id="lessonTopicBadge">Applied Statistics</span>
+          <h2 class="card-title-lg mt-2" id="lessonTitle">Mean vs. Median: Choosing the Right Central Tendency</h2>
+          <div id="lessonBodyText" class="mt-4 text-slate-700 text-sm leading-relaxed">
+            <p>The <strong>mean</strong> (average) sums all data points and divides by count, making it highly vulnerable to extreme outliers.</p>
+            <div class="code-callout p-3 bg-slate-50 border-l-4 border-emerald-500 rounded my-3 font-mono text-xs text-slate-800">
+              Salaries: $50k, $52k, $48k, $55k, $1,200,000<br>
+              Mean is ~$281k (distorted) | Median is $52k (accurate)
+            </div>
+            <p>For skewed data (compensation, latency, home values), prioritize the <strong>Median</strong>.</p>
+          </div>
+        </div>
+
+        <div class="card" id="lessonQuizCard">
+          <h3 class="card-title-sm mb-3">Knowledge Check (+30 XP)</h3>
+          <div id="lessonQuizActiveContent">
+            <p class="font-bold text-sm text-slate-900 mb-3" id="lessonQPrompt">
+              Dataset: [10, 12, 14, 15, 500]. Which metric better represents the typical value?
+            </p>
+            <div class="flex flex-col gap-2">
+              <button class="sim-choice-btn" onclick="checkLessonAns(0)">Option 1: Mean, because it uses every number</button>
+              <button class="sim-choice-btn" onclick="checkLessonAns(1)">Option 2: Median (14), because it resists the extreme outlier (500)</button>
+              <button class="sim-choice-btn" onclick="checkLessonAns(2)">Option 3: Mode, which is always 500</button>
+            </div>
+          </div>
+
+          <div class="hidden" id="lessonCompleteBox" style="text-align:center; padding:20px 0;">
+            <div style="font-size:3rem; margin-bottom:8px;">🏆</div>
+            <h3 class="card-title-md mt-2">Mission Completed!</h3>
+            <p class="card-subtitle mt-1">+30 XP Awarded & Statistics Score Boosted to 55%</p>
+            <button class="btn-mint-primary mt-4" onclick="finishLessonSession()">Apply to Dashboard & Roadmap →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         8. CAREER PASSPORT
+         ==================================================================== -->
+    <section class="view-section hidden" id="passportView">
+      <div class="passport-container">
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <span class="badge-mint">SkillQuest AI Verified Credential</span>
+            <h1 class="card-title-lg mt-2">Official Career Passport</h1>
+            <p class="card-subtitle">Candidate: <strong class="text-slate-900" id="passportCandidateName">Alex Morgan</strong> (2nd Yr CS)</p>
+          </div>
+          <div class="passport-stamp">VERIFIED READY</div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 my-6 p-4 bg-slate-50 rounded-2xl">
+          <div><span class="kpi-label">Target Career</span><p class="font-bold text-base text-slate-900">Data Scientist</p></div>
+          <div><span class="kpi-label">Career Fit Rating</span><p class="font-bold text-base text-emerald-600">91% Alignment</p></div>
+          <div><span class="kpi-label">Career Readiness</span><p class="font-bold text-base text-slate-900">68% / 100%</p></div>
+          <div><span class="kpi-label">Total Audited XP</span><p class="font-bold text-base text-amber-600">1,280 XP</p></div>
+        </div>
+
+        <h4 class="font-bold text-slate-900 mb-2">Verified Skill Evidence Matrix</h4>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="badge-mint">Python Programming (80%)</span>
+          <span class="badge-mint">Analytical Reasoning (91%)</span>
+          <span class="badge-mint">Problem Solving (88%)</span>
+          <span class="badge-mint">SQL & Databases (75%)</span>
+          <span class="badge-pill-soft">Applied Statistics (55%)</span>
+        </div>
+
+        <button class="btn-mint-primary w-full" onclick="window.print()">
+          <span>Print / Export Verified PDF Passport</span> 🖨️
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       FLOATING AI CHATBOX WIDGET (QUEST MENTOR)
+       ==================================================================== -->
+  <button class="floating-chat-trigger" id="chatTriggerBtn" onclick="toggleChatWindow()">
+    💬
+    <span class="chat-unread-badge"></span>
+  </button>
+
+  <div class="chat-widget-window hidden" id="chatWidgetWindow">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">🤖</div>
+        <div>
+          <strong style="font-size:0.9rem; display:block;">Quest Mentor AI</strong>
+          <span style="font-size:0.7rem; opacity:0.85;">● Context-Aware Career Advisor</span>
+        </div>
+      </div>
+      <button class="chat-close-btn" onclick="toggleChatWindow()">✕</button>
+    </div>
+
+    <div class="chat-body-messages" id="chatBodyMessages">
+      <div class="chat-msg bot">
+        👋 Hi Alex! I'm your dedicated Quest Mentor. I have full context on your Skill DNA (91% analytical, 43% stats gap). What should we tackle today?
+      </div>
+    </div>
+
+    <div class="chat-quick-tags">
+      <span class="quick-tag-chip" onclick="sendQuickPrompt('Why is my Career Readiness only 61%?')">Why 61% Readiness?</span>
+      <span class="quick-tag-chip" onclick="sendQuickPrompt('Why did my roadmap change?')">Why roadmap changed?</span>
+      <span class="quick-tag-chip" onclick="sendQuickPrompt('Give me a Statistics challenge')">Stats Challenge</span>
+    </div>
+
+    <form class="chat-footer-input" onsubmit="handleChatSubmit(event)">
+      <input type="text" class="chat-input" id="chatInputField" placeholder="Ask Quest Mentor..." required>
+      <button type="submit" class="chat-send-btn">➤</button>
+    </form>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- PURE JAVASCRIPT LOGIC -->
+  <script>
+    const CAREERS = [
+      { id: "ds", name: "Data Scientist", icon: "📊", interest: "data", fit: 91, readiness: 61, description: "Derive strategic decisions from complex data using predictive models." },
+      { id: "ai", name: "AI Engineer", icon: "🧠", interest: "code", fit: 87, readiness: 43, description: "Design neural networks, LLM pipelines, and machine learning models." },
+      { id: "da", name: "Data Analyst", icon: "📈", interest: "data", fit: 84, readiness: 76, description: "Fastest path to job readiness! Clean data, build BI dashboards & reports." },
+      { id: "ux", name: "UX Designer", icon: "🎨", interest: "design", fit: 74, readiness: 52, description: "Create human-centered user flows, interactive prototypes & usability." }
+    ];
+
+    const SKILL_LABELS = {
+      python: "Python Programming",
+      sql: "SQL & Databases",
+      statistics: "Applied Statistics",
+      problemSolving: "Problem Solving",
+      analytical: "Analytical Thinking",
+      communication: "Technical Communication",
+      creativity: "Divergent Creativity"
+    };
+
+    const QUESTIONS = [
+      { id: "q1", prompt: "Which task gives you the greatest flow state?", options: [{ label: "Analyzing an unexplored dataset to find hidden trends" }, { label: "Designing a sleek mobile onboarding flow" }, { label: "Writing a script to automate an annoying workflow" }] },
+      { id: "q2", prompt: "A core conversion metric suddenly drops 22% overnight. What is your first reaction?", options: [{ label: "Verify upstream tracking scripts & pipeline integrity first" }, { label: "Post a high-priority alert across Slack channels immediately" }] },
+      { id: "q3", prompt: "What is the output of:\\n\\nnumbers = [10, 20, 30, 40]\\nprint(numbers[-2:])", options: [{ label: "[30, 40]" }, { label: "[20, 30]" }] },
+      { id: "q4", prompt: "Which SQL clause is strictly used to filter grouped aggregation results?", options: [{ label: "HAVING" }, { label: "WHERE" }] },
+      { id: "q5", prompt: "Dataset: [2, 2, 3, 4, 100]. Which statement is mathematically accurate?", options: [{ label: "The Mean (22.2) is heavily distorted by outlier (100) compared to Median (3)" }, { label: "The Mean and Median are identical" }] },
+      { id: "q6", type: "confidence", prompt: "On a scale of 0 to 100%, rate your confidence with Applied Statistics & Data Intuition:" }
+    ];
+
+    let APP_STATE = {
+      isLoggedIn: false,
+      user: { name: "Alex Morgan", email: "alex@skillquest.ai" },
+      currentView: "auth",
+      xp: 1280,
+      streak: 7,
+      targetCareer: "ds",
+      quizStep: 0,
+      activeLearnTopic: "statistics",
+      roadmapMutated: false,
+      skillDNA: {
+        python: 72,
+        sql: 55,
+        statistics: 43,
+        problemSolving: 88,
+        analytical: 91,
+        communication: 64,
+        creativity: 81
+      }
+    };
+
+    function switchAuthTab(mode) {
+      const isSignUp = mode === 'signup';
+      document.getElementById("tabSignIn").classList.toggle("active", !isSignUp);
+      document.getElementById("tabSignUp").classList.toggle("active", isSignUp);
+      document.getElementById("nameFieldGroup").style.display = isSignUp ? "block" : "none";
+      document.getElementById("authHeaderTitle").textContent = isSignUp ? "Create Your Account" : "Discover Your Career DNA";
+      document.getElementById("authSubmitBtn").innerHTML = isSignUp ? '<span>Create Account & Start Quiz</span> →' : '<span>Sign In & Start Discovery Quiz</span> →';
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("authNameInput").value.trim() || "Alex Morgan";
+      const email = document.getElementById("authEmailInput").value.trim() || "alex@skillquest.ai";
+      APP_STATE.user = { name, email };
+      APP_STATE.isLoggedIn = true;
+      updateUserDisplay();
+      showToast(`Welcome ${name}! Starting your Career Discovery Assessment.`);
+      navigateTo("quiz");
+    }
+
+    function quickGuestLogin() {
+      APP_STATE.user = { name: "Alex Morgan", email: "alex@skillquest.ai" };
+      APP_STATE.isLoggedIn = true;
+      updateUserDisplay();
+      showToast("Signed in as Demo Student: Alex (2nd Yr CS)!");
+      navigateTo("quiz");
+    }
+
+    function handleLogout() {
+      if (confirm("Log out of SkillQuest?")) {
+        APP_STATE.isLoggedIn = false;
+        APP_STATE.quizStep = 0;
+        navigateTo("auth");
+        showToast("Logged out successfully.");
+      }
+    }
+
+    function navigateTo(viewId) {
+      APP_STATE.currentView = viewId;
+      const isAuth = viewId === "auth";
+      document.getElementById("mainHeader").style.display = isAuth ? "none" : "block";
+
+      document.querySelectorAll(".nav-item").forEach(b => b.classList.toggle("active", b.getAttribute("data-view") === viewId));
+      ["auth", "quiz", "dashboard", "analysis", "simulator", "roadmap", "learn", "passport"].forEach(v => {
+        const el = document.getElementById(`${v}View`);
+        if (el) el.classList.toggle("hidden", v !== viewId);
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (viewId === "dashboard") renderDashboard();
+      if (viewId === "quiz") renderQuizStep();
+      if (viewId === "analysis") renderAnalysis();
+    }
+
+    function showToast(msg) {
+      const c = document.getElementById("toastContainer");
+      const t = document.createElement("div");
+      t.className = "toast";
+      t.innerHTML = `<span>✓</span> <span>${msg}</span>`;
+      c.appendChild(t);
+      setTimeout(() => t.remove(), 3200);
+    }
+
+    function updateUserDisplay() {
+      const name = APP_STATE.user.name;
+      document.getElementById("userDisplayName").textContent = name.split(" ")[0];
+      document.getElementById("dashGreetingName").textContent = name.split(" ")[0];
+      document.getElementById("passportCandidateName").textContent = name;
+      document.getElementById("userAvatar").textContent = name.charAt(0).toUpperCase();
+      document.getElementById("xpCount").textContent = APP_STATE.xp;
+    }
+
+    function renderDashboard() {
+      const careersGrid = document.getElementById("dashboardCareersGrid");
+      careersGrid.innerHTML = CAREERS.map(c => `
+        <div class="career-track-card ${c.id === APP_STATE.targetCareer ? 'active' : ''}" onclick="selectCareer('${c.id}')">
+          <div class="flex justify-between items-center mb-2">
+            <span style="font-size:1.4rem;">${c.icon}</span>
+            <span class="badge-mint">${c.fit}% Fit</span>
+          </div>
+          <h4>${c.name}</h4>
+          <p class="card-subtitle mt-1">${c.description}</p>
+          <div class="progress-bar-bg mt-3"><div class="progress-bar-fill fill-mint" style="width:${c.fit}%"></div></div>
+        </div>
+      `).join("");
+
+      const barsContainer = document.getElementById("readinessBarsContainer");
+      barsContainer.innerHTML = `
+        <div class="readiness-row"><div class="readiness-info"><span>Technical Competency</span><strong class="text-mint">74%</strong></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-mint" style="width:74%"></div></div></div>
+        <div class="readiness-row mt-2"><div class="readiness-info"><span>Analytical Reasoning</span><strong class="text-mint">91%</strong></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-mint" style="width:91%"></div></div></div>
+        <div class="readiness-row mt-2"><div class="readiness-info"><span>Problem Solving</span><strong class="text-mint">88%</strong></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-mint" style="width:88%"></div></div></div>
+        <div class="readiness-row mt-2"><div class="readiness-info"><span>Career Simulation</span><strong class="text-mint">73%</strong></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-mint" style="width:73%"></div></div></div>
+        <div class="readiness-row mt-2"><div class="readiness-info"><span>Interview Readiness</span><strong class="text-mint">58%</strong></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-amber" style="width:58%"></div></div></div>
+      `;
+    }
+
+    function selectCareer(id) {
+      APP_STATE.targetCareer = id;
+      document.getElementById("dashTargetCareerName").textContent = CAREERS.find(c => c.id === id)?.name;
+      renderDashboard();
+    }
+
+    function renderQuizStep() {
+      const q = QUESTIONS[APP_STATE.quizStep];
+      if (!q) {
+        APP_STATE.xp += 50;
+        showToast("🎉 Diagnostic Complete! +50 XP Awarded. Dashboard Unlocked!");
+        navigateTo("dashboard");
+        return;
+      }
+      document.getElementById("quizCurrentStep").textContent = APP_STATE.quizStep + 1;
+      document.getElementById("quizTotalSteps").textContent = QUESTIONS.length;
+      document.getElementById("quizProgressBar").style.width = `${((APP_STATE.quizStep + 1) / QUESTIONS.length) * 100}%`;
+      document.getElementById("quizPrompt").textContent = q.prompt;
+
+      const opts = document.getElementById("quizOptionsContainer");
+      const slider = document.getElementById("confidenceSliderBox");
+
+      if (q.type === "confidence") {
+        opts.classList.add("hidden");
+        slider.classList.remove("hidden");
+      } else {
+        slider.classList.add("hidden");
+        opts.classList.remove("hidden");
+        opts.innerHTML = q.options.map((o, i) => `
+          <button class="quiz-option-btn" onclick="pickQuiz(${i})">
+            <span>${o.label}</span>
+            <span>✓</span>
+          </button>
+        `).join("");
+      }
+    }
+
+    function pickQuiz(i) {
+      APP_STATE.quizStep++;
+      renderQuizStep();
+    }
+
+    function submitConfidenceAnswer() {
+      APP_STATE.quizStep++;
+      renderQuizStep();
+    }
+
+    function renderAnalysis() {
+      const dna = APP_STATE.skillDNA;
+      let svg = `<svg viewBox="0 0 440 300" width="100%" height="300">`;
+      Object.entries(dna).forEach(([k, v], i) => {
+        const y = 24 + i * 40;
+        svg += `
+          <circle cx="16" cy="${y}" r="5" fill="#10b981" />
+          <text x="36" y="${y - 4}" font-size="12" font-weight="700">${SKILL_LABELS[k]}</text>
+          <rect x="36" y="${y}" width="220" height="8" rx="4" fill="#f1f5f9" />
+          <rect x="36" y="${y}" width="${(v / 100) * 220}" height="8" rx="4" fill="${v >= 75 ? '#10b981' : v >= 50 ? '#3b82f6' : '#f59e0b'}" />
+          <text x="270" y="${y + 7}" font-size="12" font-weight="800" fill="#0f172a">${v}%</text>
+        `;
+      });
+      svg += `</svg>`;
+      document.getElementById("helixSvgContainer").innerHTML = svg;
+    }
+
+    /* THE HACKATHON WOW MOMENT: ADAPTIVE ROADMAP MUTATION */
+    function triggerAdaptiveDemo() {
+      APP_STATE.roadmapMutated = true;
+      navigateTo("roadmap");
+      document.getElementById("adaptiveRoadmapBanner").classList.remove("hidden");
+      document.getElementById("stage2Title").textContent = "⚡ Remedial Adaptive Sprint: Statistics Fundamentals";
+      document.getElementById("stage2Desc").textContent = "Roadmap adapted based on 35% diagnostic score. Prerequisite probability drills inserted.";
+      document.getElementById("stage2TaskList").innerHTML = `
+        <div class="flex items-center gap-2 text-sm font-semibold text-red-700 mb-2">
+          <span>⚠️</span> <span>[INJECTED] Statistics Fundamentals & Outlier Resistance (+30 XP)</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm font-semibold text-red-700 mb-2">
+          <span>⚠️</span> <span>[INJECTED] Probability & Central Tendency Practice (+30 XP)</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm font-semibold text-slate-800">
+          <span>🔲</span> <span>Standard Machine Learning Core (Unlocks after remedial)</span>
+        </div>
+      `;
+      showToast("⚡ Adaptive Engine Triggered: Roadmap automatically adapted to address Statistics gap!");
+    }
+
+    function submitSimChoice(choice) {
+      document.getElementById("simFeedbackBox").classList.remove("hidden");
+      if (choice === 1) {
+        APP_STATE.xp += 75;
+        updateUserDisplay();
+        showToast("🎉 Correct Strategic Action! +75 XP awarded.");
+      }
+    }
+
+    function checkLessonAns(i) {
+      if (i === 1) {
+        document.getElementById("lessonQuizActiveContent").classList.add("hidden");
+        document.getElementById("lessonCompleteBox").classList.remove("hidden");
+      } else {
+        alert("Try again! Remember, the median is immune to extreme outliers.");
+      }
+    }
+
+    function finishLessonSession() {
+      APP_STATE.xp += 30;
+      APP_STATE.skillDNA.statistics = 55;
+      updateUserDisplay();
+      showToast("+30 XP awarded! Statistics proficiency updated to 55%.");
+      navigateTo("dashboard");
+    }
+
+    function proceedNextMilestone() {
+      APP_STATE.xp += 40;
+      updateUserDisplay();
+      showToast("Milestone verified! +40 XP awarded.");
+      navigateTo("dashboard");
+    }
+
+    /* QUEST MENTOR CHATBOX */
+    function toggleChatWindow() {
+      const chatWin = document.getElementById("chatWidgetWindow");
+      chatWin.classList.toggle("hidden");
+      if (!chatWin.classList.contains("hidden")) {
+        document.querySelector(".chat-unread-badge").style.display = "none";
+        document.getElementById("chatInputField").focus();
+      }
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("chatInputField");
+      const text = input.value.trim();
+      if (!text) return;
+      
+      appendChatMessage(text, 'user');
+      input.value = '';
+
+      setTimeout(() => {
+        const botReply = generateBotResponse(text);
+        appendChatMessage(botReply, 'bot');
+      }, 600);
+    }
+
+    function sendQuickPrompt(promptText) {
+      appendChatMessage(promptText, 'user');
+      setTimeout(() => {
+        const botReply = generateBotResponse(promptText);
+        appendChatMessage(botReply, 'bot');
+      }, 500);
+    }
+
+    function appendChatMessage(text, sender) {
+      const container = document.getElementById("chatBodyMessages");
+      const msgDiv = document.createElement("div");
+      msgDiv.className = `chat-msg ${sender}`;
+      msgDiv.textContent = text;
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function generateBotResponse(input) {
+      const query = input.toLowerCase();
+      if (query.includes("61%") || query.includes("readiness")) {
+        return "Alex, your Career Fit is 91% because your analytical ability is top-tier (91%), but your Career Readiness is 61% because you haven't yet proven end-to-end portfolio projects and Statistics is at 43%. Completing Stage 2 will push you past 75%!";
+      } else if (query.includes("roadmap") || query.includes("change")) {
+        return "SkillQuest noticed your demonstrated accuracy in Statistics (43%) didn't match your self-confidence (82%). Rather than letting you fail later, the engine adapted your roadmap with prerequisite drills!";
+      } else {
+        return "Based on your verified Skill DNA, focus on your top skill gap (Applied Statistics) in the Learn Hub today to maximize readiness.";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      navigateTo("auth");
+    });
+  </script>
+</body>
+</html>

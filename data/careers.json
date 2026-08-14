@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Backend Engineer",
+    "description": "Builds and maintains server-side applications, APIs, and databases.",
+    "average_salary": 105000,
+    "growth_outlook": "high",
+    "required_skills": [
+      {"skill": "Python", "required_proficiency": 75, "weight": 1.5},
+      {"skill": "FastAPI", "required_proficiency": 65, "weight": 1.2},
+      {"skill": "SQL", "required_proficiency": 70, "weight": 1.3},
+      {"skill": "System Design", "required_proficiency": 60, "weight": 1.0},
+      {"skill": "Problem Solving", "required_proficiency": 70, "weight": 1.0}
+    ]
+  },
+  {
+    "title": "Frontend Engineer",
+    "description": "Builds user-facing interfaces and client-side applications.",
+    "average_salary": 98000,
+    "growth_outlook": "high",
+    "required_skills": [
+      {"skill": "React", "required_proficiency": 75, "weight": 1.5},
+      {"skill": "CSS", "required_proficiency": 70, "weight": 1.2},
+      {"skill": "UI/UX Design", "required_proficiency": 50, "weight": 0.8},
+      {"skill": "Problem Solving", "required_proficiency": 60, "weight": 1.0}
+    ]
+  },
+  {
+    "title": "Data Scientist",
+    "description": "Analyzes data and builds predictive models to drive decisions.",
+    "average_salary": 120000,
+    "growth_outlook": "high",
+    "required_skills": [
+      {"skill": "Python", "required_proficiency": 70, "weight": 1.2},
+      {"skill": "Data Analysis", "required_proficiency": 80, "weight": 1.5},
+      {"skill": "Machine Learning", "required_proficiency": 70, "weight": 1.4},
+      {"skill": "SQL", "required_proficiency": 60, "weight": 1.0},
+      {"skill": "Communication", "required_proficiency": 60, "weight": 0.8}
+    ]
+  },
+  {
+    "title": "Product Manager",
+    "description": "Defines product strategy and coordinates teams to deliver it.",
+    "average_salary": 115000,
+    "growth_outlook": "medium",
+    "required_skills": [
+      {"skill": "Project Management", "required_proficiency": 80, "weight": 1.5},
+      {"skill": "Communication", "required_proficiency": 80, "weight": 1.5},
+      {"skill": "Problem Solving", "required_proficiency": 70, "weight": 1.0},
+      {"skill": "UI/UX Design", "required_proficiency": 40, "weight": 0.6}
+    ]
+  }
+]
